@@ -18,6 +18,11 @@ loveit.py
 
 Loves whatever track is now playing on Last.fm, then prints confirmation of last loved track.
 
+loved.py
+---------
+
+Shows your last 20 (or a given number of) loved tracks.
+
 scrobble.py
 -----------
 
