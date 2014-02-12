@@ -22,3 +22,27 @@ lastfm_network = pylast.LastFMNetwork(api_key = API_KEY, api_secret = API_SECRET
 def print_it(text):
     print text.encode('utf-8')
 
+    
+TRACK_SEPARATOR = u" - "
+
+def split_artist_track(artist_track):
+    artist_track = artist_track.replace(u" – ", " - ")
+    artist_track = artist_track.replace(u"“", "\"")
+    artist_track = artist_track.replace(u"”", "\"")
+
+    (artist, track) = artist_track.split(TRACK_SEPARATOR)
+    artist = artist.strip()
+    track = track.strip()
+    print_it("Artist:\t\t'" + artist + "'")
+    print_it("Track:\t\t'" + track + "'")
+    
+    # Validate
+    if len(artist) is 0 and len(track) is 0:
+        sys.exit("Error: Artist and track are blank")
+    if len(artist) is 0:
+        sys.exit("Error: Artist is blank")
+    if len(track) is 0:
+        sys.exit("Error: Track is blank")
+
+    return (artist, track)
+    

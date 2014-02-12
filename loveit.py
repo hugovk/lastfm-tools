@@ -16,6 +16,9 @@ if len(sys.argv) > 1:
 else:
     track = lastfm_network.get_user(lastfm_username).get_now_playing()
 
+last_loved_track = str(lastfm_network.get_user(lastfm_username).get_loved_tracks(limit=1)[0][0])
+print "Last:\t" + str(last_loved_track)
+
 print "Loving:\t" + str(track)
 if track is not None:
     track.love()
