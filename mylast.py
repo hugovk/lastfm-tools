@@ -22,7 +22,10 @@ lastfm_network = pylast.LastFMNetwork(api_key = API_KEY, api_secret = API_SECRET
 def print_it(text):
     print text.encode('utf-8')
 
-    
+def print_track(track):
+    unicode_track = unicode(str(track.track), 'utf8')
+    print_it(track.playback_date + "\t" + unicode_track)
+
 TRACK_SEPARATOR = u" - "
 
 def split_artist_track(artist_track):
