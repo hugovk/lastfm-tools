@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 """
 Show 20 last played tracks, or all the last played tracks of an artist (and optionally track)
 """
@@ -17,22 +17,27 @@ def get_artist_tracks(username, artist, title):
     if TRACK_SEPARATOR in artist:
         (artist, title) = split_artist_track(artist)
 
-    print "Searching Last.fm library..."
+    print "Searching Last.fm library...\r",
     try:
         tracks = lastfm_network.get_user(username).get_artist_tracks(artist = artist)
     except Exception as e:
         sys.exit("Exception: " + str(e))
 
+    total = 0
+
     if title is None: # print all
         for track in tracks:
             print_track(track)
-        print "Total:", len(tracks)
+        total = len(tracks)
         
     else: # print matching titles
         find_track = pylast.Track(artist, title, lastfm_network)
         for track in tracks:
             if str(track.track).lower() == str(find_track).lower():
-                    print_track(track)
+                print_track(track)
+                total += 1
+
+    print "Total:", total
 
 
 if __name__ == "__main__":
