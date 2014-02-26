@@ -11,6 +11,7 @@ def get_recent_tracks(username, number):
     recent_tracks = lastfm_network.get_user(username).get_recent_tracks(limit = number)
     for track in recent_tracks:
         print_track(track)
+    return recent_tracks
 
 
 def get_artist_tracks(username, artist, title):
