@@ -1,7 +1,9 @@
 lastfm-tools
 ============
 
-Some Python CLI tools for talking to the Last.fm API
+Some Python CLI tools for talking to the Last.fm API.
+
+Some require <a href="https://github.com/hugovk/pylast">my version of pyLast</a> because the old 2011, pip-installed version doesn't implement all the Last.fm API calls.
 
 np.py
 -----
@@ -31,6 +33,11 @@ scrobble.py
 Takes a track and scrobbles it
  * Mandatory parameter 1: "artist - track"
  * Optional parameter 2: UNIX timestamp. Default: now
+
+unscrobble.py
+-------------
+
+After prompting, removes your last scrobbled track from your library.
 
 mylast.py
 ---------
