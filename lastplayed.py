@@ -4,6 +4,7 @@ Show 20 last played tracks, or all the last played tracks of an artist (and opti
 """
 
 import argparse
+import sys
 from mylast import *
 
 
