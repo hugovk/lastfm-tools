@@ -2,7 +2,6 @@
 """
 Show 20 last played tracks, or all the last played tracks of an artist (and optionally track)
 """
-
 import argparse
 import sys
 from mylast import *
@@ -21,6 +20,9 @@ def get_artist_tracks(username, artist, title):
     print "Searching Last.fm library...\r",
     try:
         tracks = lastfm_network.get_user(username).get_artist_tracks(artist = artist)
+    except AttributeError as e:
+        print "Exception: " + str(e)
+        sys.exit("Error: pylast 0.5.11 does not support getting the recent tracks for a given artist. Please install latest pylast from https://github.com/hugovk/pylast")
     except Exception as e:
         sys.exit("Exception: " + str(e))
 
@@ -43,7 +45,7 @@ def get_artist_tracks(username, artist, title):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description = "Show 20 last played tracks, or all the last played tracks of an artist (and song)", 
+        description = "Show 20 last played tracks, or all the last played tracks of an artist (and optionally track)", 
         formatter_class = argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('artist',  nargs='?', 
         help="Artist, or 'artist - track'")
@@ -57,7 +59,7 @@ if __name__ == "__main__":
 
     if not args.username:
         args.username = lastfm_username
-    
+
     if args.artist:
         get_artist_tracks(args.username, args.artist, args.track)
     else:
