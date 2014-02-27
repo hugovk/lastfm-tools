@@ -3,7 +3,11 @@ lastfm-tools
 
 Some Python CLI tools for talking to the Last.fm API.
 
-Some require <a href="https://github.com/hugovk/pylast">my version of pyLast</a> because the old 2011, pip-installed version doesn't implement all the Last.fm API calls.
+Some require <a href="https://github.com/hugovk/pylast">my update of pyLast</a> because the <a href="https://pypi.python.org/pypi/pylast">old 2011, version 0.5.11 at PyPI</a> doesn't implement all the Last.fm API calls. So install like this:
+
+```
+pip install -r requirements.txt
+```
 
 np.py
 -----
