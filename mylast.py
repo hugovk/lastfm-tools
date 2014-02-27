@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding: utf-8
 
 import pylast
@@ -29,9 +29,9 @@ def print_track(track):
 TRACK_SEPARATOR = u" - "
 
 def split_artist_track(artist_track):
-    artist_track = artist_track.replace(u" – ", " - ")
-    artist_track = artist_track.replace(u"“", "\"")
-    artist_track = artist_track.replace(u"”", "\"")
+    artist_track = artist_track.replace(u" â€“ ", " - ")
+    artist_track = artist_track.replace(u"â€œ", "\"")
+    artist_track = artist_track.replace(u"â€", "\"")
 
     (artist, track) = artist_track.split(TRACK_SEPARATOR)
     artist = artist.strip()
@@ -48,4 +48,5 @@ def split_artist_track(artist_track):
         sys.exit("Error: Track is blank")
 
     return (artist, track)
-    
+
+# End of file
