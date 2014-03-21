@@ -7,7 +7,6 @@
 # Prerequisites: mylast.py, pyLast
 
 import datetime
-import pylast
 import sys
 import time
 from mylast import *
@@ -31,10 +30,11 @@ artistTrack = sys.argv[1].decode(sys.getfilesystemencoding())
 print "input:\t\t'" + artistTrack + "'"
 # print type(artistTrack)
 
+
 def scrobbleTrack(artistTrack, unixTimestamp):
 
     (artist, track) = split_artist_track(artistTrack)
-        
+
     # Validate
     if unixTimestamp == 0:
     # Get UNIX timestamp
@@ -43,14 +43,18 @@ def scrobbleTrack(artistTrack, unixTimestamp):
 
     # Scrobble it
     if not testMode:
-        lastfm_network.scrobble(artist = artist, title = track, timestamp = unixTimestamp)
+        lastfm_network.scrobble(
+            artist=artist, title=track, timestamp=unixTimestamp)
 
     # Confirm
     # print "Confirmation from Last.fm:"
-    # recent_tracks = lastfm_network.get_user(lastfm_username).get_recent_tracks(limit=1)
+    # recent_tracks = lastfm_network.get_user(
+        # lastfm_username).get_recent_tracks(limit=1)
     # for track in recent_tracks:
         # unicode_track = unicode(str(track.track), 'utf8')
         # # print_it(track.playback_date + "\t" + unicode_track)
         # print track.playback_date + "\t" + unicode_track
 
 scrobbleTrack(artistTrack, unixTimestamp)
+
+# End of file

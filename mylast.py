@@ -2,6 +2,7 @@
 # coding: utf-8
 
 import pylast
+import sys
 
 # You have to have your own unique two values for API_KEY and API_SECRET
 # Obtain yours from http://www.last.fm/api/account for Last.fm
@@ -16,17 +17,22 @@ lastfm_password_hash = pylast.md5("my_password")
 print lastfm_password_hash
 # lastfm_password_hash = "my_password_hash"
 
-lastfm_network = pylast.LastFMNetwork(api_key = API_KEY, api_secret = API_SECRET, username = lastfm_username, password_hash = lastfm_password_hash)
+lastfm_network = pylast.LastFMNetwork(
+    api_key=API_KEY, api_secret=API_SECRET,
+    username=lastfm_username, password_hash=lastfm_password_hash)
+
 
 # Windows cmd.exe cannot do Unicode so encode first
 def print_it(text):
     print text.encode('utf-8')
+
 
 def print_track(track):
     unicode_track = unicode(str(track.track), 'utf8')
     print_it(track.playback_date + "\t" + unicode_track)
 
 TRACK_SEPARATOR = u" - "
+
 
 def split_artist_track(artist_track):
     artist_track = artist_track.replace(u" – ", " - ")
@@ -38,7 +44,7 @@ def split_artist_track(artist_track):
     track = track.strip()
     print_it("Artist:\t\t'" + artist + "'")
     print_it("Track:\t\t'" + track + "'")
-    
+
     # Validate
     if len(artist) is 0 and len(track) is 0:
         sys.exit("Error: Artist and track are blank")

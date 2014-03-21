@@ -26,6 +26,9 @@ pip-log.txt
 .tox
 nosetests.xml
 
+# Clone Digger
+output.html
+
 # Translations
 *.mo
 

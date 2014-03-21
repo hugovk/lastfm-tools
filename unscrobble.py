@@ -1,14 +1,15 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding: utf-8
 """
 Unscrobble the last played track
-Prerequisites: 
+Prerequisites:
 mylast.py, lastplayed.py, pyLast from https://github.com/hugovk/pylast
 """
 import pylast
 import sys
 from mylast import *
 from lastplayed import get_recent_tracks
+
 
 # http://stackoverflow.com/a/3041990/724176
 def query_yes_no(question, default="yes"):
@@ -21,9 +22,9 @@ def query_yes_no(question, default="yes"):
 
     The "answer" return value is one of "yes" or "no".
     """
-    valid = {"yes":True,   "y":True,  "ye":True,
-             "no":False,     "n":False}
-    if default == None:
+    valid = {"yes": True, "y": True, "ye": True,
+             "no": False, "n": False}
+    if default is None:
         prompt = " [y/n] "
     elif default == "yes":
         prompt = " [Y/n] "
@@ -40,7 +41,7 @@ def query_yes_no(question, default="yes"):
         elif choice in valid:
             return valid[choice]
         else:
-            sys.stdout.write("Please respond with 'yes' or 'no' "\
+            sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
 
 
@@ -49,18 +50,22 @@ last_scrobble = get_recent_tracks(lastfm_username, 1)[0]
 
 answer = query_yes_no("Unscrobble?")
 if not answer:
-    print "Left scrobbled"
+    sys.exit("Left scrobbled")
 else:
-    my_library = pylast.Library(user = lastfm_username, network = lastfm_network)
+    my_library = pylast.Library(user=lastfm_username, network=lastfm_network)
     artist = last_scrobble.track.artist
     title = last_scrobble.track.title
     timestamp = last_scrobble.timestamp
 
     try:
-        my_library.remove_scrobble(artist = artist, title = title, timestamp = timestamp)
+        my_library.remove_scrobble(
+            artist=artist, title=title, timestamp=timestamp)
     except AttributeError as e:
         print "Exception: " + str(e)
-        sys.exit("Error: pylast 0.5.11 does not support removing scrobbles. Please install latest pylast from https://github.com/hugovk/pylast")
+        sys.exit(
+            "Error: pylast 0.5.11 does not support removing scrobbles. "
+            "Please install latest pylast from "
+            "https://github.com/hugovk/pylast")
     except Exception as e:
         sys.exit("Exception: " + str(e))
     print "Scrobble removed"
