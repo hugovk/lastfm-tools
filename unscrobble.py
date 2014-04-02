@@ -45,10 +45,10 @@ def query_yes_no(question, default="yes"):
                              "(or 'y' or 'n').\n")
 
 
-print "Last scrobble:"
-last_scrobble = get_recent_tracks(lastfm_username, 1)[0]
+print "Last scrobbles:"
+last_scrobble = get_recent_tracks(lastfm_username, 5)[0]
 
-answer = query_yes_no("Unscrobble?")
+answer = query_yes_no("Unscrobble most recent?")
 if not answer:
     sys.exit("Left scrobbled")
 else:
@@ -70,7 +70,7 @@ else:
         sys.exit("Exception: " + str(e))
     print "Scrobble removed"
 
-print "Last five are now:"
+print "Last few are now:"
 get_recent_tracks(lastfm_username, 5)
 
 # End of file
