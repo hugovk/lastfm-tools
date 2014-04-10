@@ -13,7 +13,7 @@ def get_recent_tracks(username, number):
         username).get_recent_tracks(limit=number)
     for track in recent_tracks:
         print_track(track)
-    return recent_tracks
+    return len(recent_tracks)
 
 
 def get_artist_tracks(username, artist, title):
@@ -35,6 +35,7 @@ def get_artist_tracks(username, artist, title):
 
     total = 0
 
+    print "\t\t\t\t\r",  # clear line
     if title is None:  # print all
         for track in tracks:
             print_track(track)
@@ -48,6 +49,7 @@ def get_artist_tracks(username, artist, title):
                 total += 1
 
     print "Total:", total
+    return total
 
 
 if __name__ == "__main__":
@@ -73,8 +75,21 @@ if __name__ == "__main__":
         args.username = lastfm_username
 
     if args.artist:
-        get_artist_tracks(args.username, args.artist, args.track)
-    else:
-        get_recent_tracks(args.username, args.number)
+        text = args.username + " last played " + args.artist
+        if args.track:
+            text += " - " + args.track
+        text += ":"
+        print(text)
+
+        total = get_artist_tracks(args.username, args.artist, args.track)
+
+        if total == 0:
+            # Perhaps they meant to search for a user
+            args.username = args.artist
+            args.artist = None
+
+    if not args.artist:
+        print(args.username + " last played:")
+        total = get_recent_tracks(args.username, args.number)
 
 # End of file
