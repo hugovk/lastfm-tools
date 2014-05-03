@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
-Check what BBC radio station Winamp is now playing.
-Stop Winamp until another track starts.
+Check what BBC radio station iTunes/Winamp is now playing.
+Stop playing until the next track starts.
 """
 from __future__ import print_function
 import subprocess
