@@ -53,7 +53,7 @@ if not answer:
     sys.exit("Left scrobbled")
 else:
     my_library = pylast.Library(user=lastfm_username, network=lastfm_network)
-    artist = last_scrobble.track.artist
+    artist = str(last_scrobble.track.artist)
     title = last_scrobble.track.title
     timestamp = last_scrobble.timestamp
 
