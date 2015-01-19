@@ -3,10 +3,10 @@ lastfm-tools
 
 Some Python CLI tools for talking to the Last.fm API.
 
-Some require <a href="https://github.com/hugovk/pylast">my update of pyLast</a> because the <a href="https://pypi.python.org/pypi/pylast">old 2011, version 0.5.11 at PyPI</a> doesn't implement all the Last.fm API calls. So install like this:
+Uses pylast:
 
 ```
-pip install -r requirements.txt
+pip install pylast
 ```
 
 np.py
@@ -41,7 +41,7 @@ Takes a track and scrobbles it
 unscrobble.py
 -------------
 
-After prompting, removes your last scrobbled track from your library.
+After prompting, removes your last scrobbled track from your library. Use `--number` to unscrobble lots at a time.
 
 mylast.py
 ---------
