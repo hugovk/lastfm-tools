@@ -1,1 +1,1 @@
--e git://github.com/hugovk/pylast.git#egg=pylast
+pylast
