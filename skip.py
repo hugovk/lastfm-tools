@@ -36,7 +36,8 @@ def winamp_now_playing():
                     station = "bbc1xtra"
                 elif "BBC Radio 2" in now_playing:
                     station = "bbcradio2"
-                elif "BBC 6Music" in now_playing:
+                elif ("BBC 6Music" in now_playing or
+                      "BBC 6 Music" in now_playing):
                     station = "bbc6music"
     return station
 
