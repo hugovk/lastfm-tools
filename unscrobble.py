@@ -77,7 +77,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print "Last scrobbles:"
-    last_scrobbles = get_recent_tracks(lastfm_username, args.number)
+    # +1 because now-playing tracks may also be included
+    last_scrobbles = get_recent_tracks(lastfm_username, args.number+1)
+    # Now make sure we only unscrobble the required number
+    last_scrobbles = last_scrobbles[:args.number]
 
     answer = query_yes_no("Unscrobble last " + str(args.number) + "?")
     if not answer:
