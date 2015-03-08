@@ -27,7 +27,7 @@ def winamp_now_playing():
 
             # Is Winamp playing BBC Radio?
             now_playing = w.getCurrentTrackName()
-            if "BBC" not in now_playing:
+            if "bbc" not in now_playing.lower():
                 print("Winamp:      Not BBC")
             else:
                 if "BBC Radio 1" in now_playing:
@@ -37,7 +37,8 @@ def winamp_now_playing():
                 elif "BBC Radio 2" in now_playing:
                     station = "bbcradio2"
                 elif ("BBC 6Music" in now_playing or
-                      "BBC 6 Music" in now_playing):
+                      "BBC 6 Music" in now_playing or
+                      "bbc 6music" in now_playing):
                     station = "bbc6music"
     return station
 
