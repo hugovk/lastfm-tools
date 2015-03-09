@@ -3,7 +3,7 @@ lastfm-tools
 
 Some Python CLI tools for talking to the Last.fm API.
 
-Uses pylast:
+Uses [pylast](https://github.com/pylast/pylast):
 
 ```
 pip install pylast
