@@ -13,7 +13,7 @@ def get_recent_tracks(username, number):
         username).get_recent_tracks(limit=number)
     for track in recent_tracks:
         print_track(track)
-    return len(recent_tracks)
+    return recent_tracks
 
 
 def get_artist_tracks(username, artist, title):
@@ -24,12 +24,6 @@ def get_artist_tracks(username, artist, title):
     try:
         tracks = lastfm_network.get_user(
             username).get_artist_tracks(artist=artist)
-    except AttributeError as e:
-        print "Exception: " + str(e)
-        sys.exit(
-            "Error: pylast 0.5.11 does not support getting the recent "
-            "tracks for a given artist. Please install latest pylast from "
-            "https://github.com/hugovk/pylast")
     except Exception as e:
         sys.exit("Exception: " + str(e))
 
@@ -90,6 +84,9 @@ if __name__ == "__main__":
 
     if not args.artist:
         print(args.username + " last played:")
-        total = get_recent_tracks(args.username, args.number)
+        try:
+            get_recent_tracks(args.username, args.number)
+        except pylast.WSError as e:
+            print("Error: " + str(e))
 
 # End of file

@@ -27,9 +27,13 @@ def print_it(text):
     print text.encode('utf-8')
 
 
-def print_track(track):
+def unicode_track_and_timestamp(track):
     unicode_track = unicode(str(track.track), 'utf8')
-    print_it(track.playback_date + "\t" + unicode_track)
+    return track.playback_date + "\t" + unicode_track
+
+
+def print_track(track):
+    print_it(unicode_track_and_timestamp(track))
 
 TRACK_SEPARATOR = u" - "
 
