@@ -61,7 +61,7 @@ def unscrobble(library, scrobble):
             "Please install latest pylast: pip install -U pylast")
     except Exception as e:
         sys.exit("Exception: " + str(e))
-    print "Scrobble removed: " + unicode_track_and_timestamp(scrobble)
+    print_it("Scrobble removed: " + unicode_track_and_timestamp(scrobble))
 
 
 if __name__ == "__main__":
