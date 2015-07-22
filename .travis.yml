@@ -1,0 +1,52 @@
+language: python
+
+python:
+  - 2.6
+  - 2.7
+  - 3.2
+  - 3.3
+  - 3.4
+  - pypy
+  - pypy3
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.pip-cache/
+
+install:
+  - pip install flake8
+  - pip install -r requirements.txt
+
+#before_script:
+#  - flake8 .
+
+#script: coverage run --source=word_tools.py test_word_tools.py
+script: python lastplayed.py --username RJ
+
+after_success:
+#  - coverage report
+#  - coveralls
+  - flake8 .
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - python: 2.6
+    - python: 3.2
+    - python: 3.3
+    - python: 3.4
+    - python: pypy
+    - python: pypy3
+
+env:
+   global:
+    # travis encrypt LASTFM_API_KEY=<value>
+    - secure: "hhSUJCGe+F758cYPEH+UzpkumQswKp5W4eDeWtc0UBqQdtIuGk1S1mYwle+wFcAJAwhTkeQagbbaE4cPPKwQvHeuvTGBxbWDpmxoLG78sjYH5hlGk5OcTcpsAbqqsfxQE37mYmceC/VOnONaffAr5gbyLUKWBbzldTS9/5sFcu0="
+    # travis encrypt LASTFM_API_SECRET=<value>
+    - secure: "KaoS7GUPyi6mNSQA9tnfNNVpcVvacqom6yhhDMS97zAeINe7v0H2x1kCVoKuQ7kpx9uDxg4ZkySJaGCYRWsRUxz3/HrQu+nxTUE+iG1MgOytb0trOKcHVI9Z5MQb22MgDEhqq4mf/GkpOm6LRZ9SyRxFdGWiDjrZAGV06+/h4ME="
+    # travis encrypt LASTFM_USERNAME=<value>
+    - secure: "FmGcIAEsdlRQ6bWdFV3HCF3+nOdyl18i6O4EoDbTKgavodmNEWvMzYLDuti9CKWbUm1w6FCpWu5D0uDgqN2KD853yLPkD84znBl+JuB8ge5i+TlfJiwxFrGB35dog2+KN2CF8yclS2riPkWkblRNaPts1g8zs3melMNqCXPD5bM="
+    # travis encrypt LASTFM_PASSWORD_HASH=<value>
+    - secure: "gPQeD6Y5l7bxVa+R/LV9AfvD1gLN7o2UbB1p1hZt4aCyzH5+1iFKKLshSOB9J9ueZvbBXv9JrC10N9IBi5FWry/npi3TOk0AhbzZcwOIxAWL3+AJHgz/0sRhrUwFHORp9fPYmFTjX8rVScmah8GYzjt1mXrSRTDlW+fIdEczk+w="

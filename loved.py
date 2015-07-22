@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from __future__ import print_function
 import sys
 from mylast import *
 
@@ -16,6 +17,6 @@ last_loved_tracks = lastfm_network.get_user(
     lastfm_username).get_loved_tracks(limit=number)
 
 for i, track in enumerate(last_loved_tracks):
-    print str(i+1) + ")\t" + str(track[0])
+    print(str(i+1) + ")\t" + str(track[0]))
 
 # End of file

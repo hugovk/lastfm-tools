@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import sys
 from mylast import *
 
@@ -10,4 +11,4 @@ if len(sys.argv) > 1:
 else:
     username = lastfm_username
 
-print lastfm_network.get_user(username).get_now_playing()
+print(lastfm_network.get_user(username).get_now_playing())

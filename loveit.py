@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from __future__ import print_function
 import sys
 from mylast import *
 
@@ -18,9 +19,9 @@ else:
 
 last_loved_track = str(lastfm_network.get_user(
     lastfm_username).get_loved_tracks(limit=1)[0][0])
-print "Last:\t" + str(last_loved_track)
+print("Last:\t" + str(last_loved_track))
 
-print "Loving:\t" + str(track)
+print("Loving:\t" + str(track))
 if track is not None:
     track.love()
 
@@ -28,6 +29,6 @@ if track is not None:
 # the last loved track from Last.fm
 last_loved_track = str(
     lastfm_network.get_user(lastfm_username).get_loved_tracks(limit=1)[0][0])
-print "Loved:\t" + str(last_loved_track)
+print("Loved:\t" + str(last_loved_track))
 
 # End of file

@@ -3,6 +3,7 @@
 Show 20 last played tracks, or all the last played tracks of an artist
 (and optionally track)
 """
+from __future__ import print_function
 import argparse
 import sys
 from mylast import *
@@ -20,7 +21,7 @@ def get_artist_tracks(username, artist, title):
     if TRACK_SEPARATOR in artist:
         (artist, title) = split_artist_track(artist)
 
-    print "Searching Last.fm library...\r",
+    print("Searching Last.fm library...\r",)
     try:
         tracks = lastfm_network.get_user(
             username).get_artist_tracks(artist=artist)
@@ -29,7 +30,7 @@ def get_artist_tracks(username, artist, title):
 
     total = 0
 
-    print "\t\t\t\t\r",  # clear line
+    print("\t\t\t\t\r"),  # clear line
     if title is None:  # print all
         for track in tracks:
             print_track(track)
@@ -42,7 +43,7 @@ def get_artist_tracks(username, artist, title):
                 print_track(track)
                 total += 1
 
-    print "Total:", total
+    print("Total:", total)
     return total
 
 
