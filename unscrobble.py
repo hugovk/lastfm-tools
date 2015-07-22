@@ -5,6 +5,7 @@ Unscrobble the last played track or tracks
 Prerequisites:
 mylast.py, lastplayed.py, pyLast >= 1.0.0
 """
+from __future__ import print_function
 import argparse
 import pylast
 import sys
@@ -55,7 +56,7 @@ def unscrobble(library, scrobble):
         my_library.remove_scrobble(
             artist=artist, title=title, timestamp=timestamp)
     except AttributeError as e:
-        print "Exception: " + str(e)
+        print("Exception: " + str(e))
         sys.exit(
             "Error: pylast 0.5.11 does not support removing scrobbles. "
             "Please install latest pylast: pip install -U pylast")
@@ -76,7 +77,7 @@ if __name__ == "__main__":
         help="Number of tracks to unscrobble")
     args = parser.parse_args()
 
-    print "Last scrobbles:"
+    print("Last scrobbles:")
     # +1 because now-playing tracks may also be included
     last_scrobbles = get_recent_tracks(lastfm_username, args.number+1)
     # Now make sure we only unscrobble the required number
@@ -91,7 +92,7 @@ if __name__ == "__main__":
         for last_scrobble in last_scrobbles:
             unscrobble(my_library, last_scrobble)
 
-    print "Last few are now:"
+    print("Last few are now:")
     get_recent_tracks(lastfm_username, 5)
 
 # End of file

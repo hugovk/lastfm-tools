@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+from __future__ import print_function
 import os
 import pylast
 import sys
@@ -23,7 +24,7 @@ except KeyError:
     lastfm_username = "my_username"
     # You can use either use the password, or find the hash once and use that
     lastfm_password_hash = pylast.md5("my_password")
-    print lastfm_password_hash
+    print(lastfm_password_hash)
     # lastfm_password_hash = "my_password_hash"
 
 
@@ -34,7 +35,7 @@ lastfm_network = pylast.LastFMNetwork(
 
 # Windows cmd.exe cannot do Unicode so encode first
 def print_it(text):
-    print text.encode('utf-8')
+    print(text.encode('utf-8'))
 
 
 def unicode_track_and_timestamp(track):
