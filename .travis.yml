@@ -37,11 +37,12 @@ matrix:
     - python: 3.2
     - python: 3.3
     - python: 3.4
-    - python: "pypy"
-    - python: "pypy3"
+    - python: pypy
+    - python: pypy3
 
 env:
-   # travis encrypt LASTFM_API_KEY=<value>
-   -secure: "hhSUJCGe+F758cYPEH+UzpkumQswKp5W4eDeWtc0UBqQdtIuGk1S1mYwle+wFcAJAwhTkeQagbbaE4cPPKwQvHeuvTGBxbWDpmxoLG78sjYH5hlGk5OcTcpsAbqqsfxQE37mYmceC/VOnONaffAr5gbyLUKWBbzldTS9/5sFcu0="
+   global:
+    # travis encrypt LASTFM_API_KEY=<value>
+    - secure: "hhSUJCGe+F758cYPEH+UzpkumQswKp5W4eDeWtc0UBqQdtIuGk1S1mYwle+wFcAJAwhTkeQagbbaE4cPPKwQvHeuvTGBxbWDpmxoLG78sjYH5hlGk5OcTcpsAbqqsfxQE37mYmceC/VOnONaffAr5gbyLUKWBbzldTS9/5sFcu0="
     # travis encrypt LASTFM_API_SECRET=<value>
-   - secure: "KaoS7GUPyi6mNSQA9tnfNNVpcVvacqom6yhhDMS97zAeINe7v0H2x1kCVoKuQ7kpx9uDxg4ZkySJaGCYRWsRUxz3/HrQu+nxTUE+iG1MgOytb0trOKcHVI9Z5MQb22MgDEhqq4mf/GkpOm6LRZ9SyRxFdGWiDjrZAGV06+/h4ME="
+    - secure: "KaoS7GUPyi6mNSQA9tnfNNVpcVvacqom6yhhDMS97zAeINe7v0H2x1kCVoKuQ7kpx9uDxg4ZkySJaGCYRWsRUxz3/HrQu+nxTUE+iG1MgOytb0trOKcHVI9Z5MQb22MgDEhqq4mf/GkpOm6LRZ9SyRxFdGWiDjrZAGV06+/h4ME="
