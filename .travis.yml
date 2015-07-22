@@ -46,3 +46,7 @@ env:
     - secure: "hhSUJCGe+F758cYPEH+UzpkumQswKp5W4eDeWtc0UBqQdtIuGk1S1mYwle+wFcAJAwhTkeQagbbaE4cPPKwQvHeuvTGBxbWDpmxoLG78sjYH5hlGk5OcTcpsAbqqsfxQE37mYmceC/VOnONaffAr5gbyLUKWBbzldTS9/5sFcu0="
     # travis encrypt LASTFM_API_SECRET=<value>
     - secure: "KaoS7GUPyi6mNSQA9tnfNNVpcVvacqom6yhhDMS97zAeINe7v0H2x1kCVoKuQ7kpx9uDxg4ZkySJaGCYRWsRUxz3/HrQu+nxTUE+iG1MgOytb0trOKcHVI9Z5MQb22MgDEhqq4mf/GkpOm6LRZ9SyRxFdGWiDjrZAGV06+/h4ME="
+    # travis encrypt LASTFM_USERNAME=<value>
+    - secure: "FmGcIAEsdlRQ6bWdFV3HCF3+nOdyl18i6O4EoDbTKgavodmNEWvMzYLDuti9CKWbUm1w6FCpWu5D0uDgqN2KD853yLPkD84znBl+JuB8ge5i+TlfJiwxFrGB35dog2+KN2CF8yclS2riPkWkblRNaPts1g8zs3melMNqCXPD5bM="
+    # travis encrypt LASTFM_PASSWORD_HASH=<value>
+    - secure: "gPQeD6Y5l7bxVa+R/LV9AfvD1gLN7o2UbB1p1hZt4aCyzH5+1iFKKLshSOB9J9ueZvbBXv9JrC10N9IBi5FWry/npi3TOk0AhbzZcwOIxAWL3+AJHgz/0sRhrUwFHORp9fPYmFTjX8rVScmah8GYzjt1mXrSRTDlW+fIdEczk+w="
