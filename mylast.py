@@ -1,14 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import os
 import pylast
 import sys
 
 # You have to have your own unique two values for API_KEY and API_SECRET
 # Obtain yours from http://www.last.fm/api/account for Last.fm
 
-API_KEY = "my_api_key"
-API_SECRET = "my_apy_secret"
+try:
+    API_KEY = os.environ['LASTFM_API_KEY']
+    API_SECRET = os.environ['LASTFM_API_SECRET']
+except KeyError:
+    API_KEY = "my_api_key"
+    API_SECRET = "my_apy_secret"
 
 # In order to perform a write operation you need to authenticate yourself
 lastfm_username = "my_username"
