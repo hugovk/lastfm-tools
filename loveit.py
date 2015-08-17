@@ -25,10 +25,11 @@ print("Loving:\t" + str(track))
 if track is not None:
     track.love()
 
-# Confirm the track has been loved by retrieving
-# the last loved track from Last.fm
-last_loved_track = str(
-    lastfm_network.get_user(lastfm_username).get_loved_tracks(limit=1)[0][0])
-print("Loved:\t" + str(last_loved_track))
+
+# Confirm the track has been loved
+if track.get_userloved():
+    print("Loved it!")
+else:
+    print("Error?")
 
 # End of file
