@@ -1,1 +1,1 @@
-pylast
+pylast>=1.0.0
