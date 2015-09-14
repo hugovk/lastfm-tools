@@ -6,6 +6,7 @@ python:
   - 3.2
   - 3.3
   - 3.4
+  - 3.5
   - pypy
   - pypy3
 
@@ -37,6 +38,7 @@ matrix:
     - python: 3.2
     - python: 3.3
     - python: 3.4
+    - python: 3.5
     - python: pypy
     - python: pypy3
 
