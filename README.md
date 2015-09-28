@@ -34,7 +34,7 @@ Shows your last 20 (or a given number of) loved tracks.
 nowplaying.py
 -------------
 
-Command-line loopy thing to show what a Last.fm user is now playing. Based on [bbsscrobbler](https://github.com/hugovk/bbcscrobbler).
+Command-line loopy thing to show what a Last.fm user is now playing. Based on [bbcscrobbler](https://github.com/hugovk/bbcscrobbler).
 
 scrobble.py
 -----------
