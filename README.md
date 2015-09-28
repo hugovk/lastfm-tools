@@ -11,7 +11,7 @@ pip install pylast
 
 np.py
 -----
-Show my now playing song, or that of a given username
+Show my now playing song, or that of a given username.
 
 
 lastplayed.py
