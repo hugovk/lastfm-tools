@@ -15,7 +15,7 @@ Show my now playing song, or that of a given username
 
 
 lastplayed.py
------------
+-------------
 
 Shows the last 20 tracks you scrobbled (or of a given username).
 
@@ -27,9 +27,14 @@ loveit.py
 Loves whatever track is now playing on Last.fm, then prints confirmation of last loved track.
 
 loved.py
----------
+--------
 
 Shows your last 20 (or a given number of) loved tracks.
+
+nowplaying.py
+-------------
+
+Command-line loopy thing to show what a Last.fm user is now playing. Based on [bbsscrobbler](https://github.com/hugovk/bbcscrobbler).
 
 scrobble.py
 -----------
