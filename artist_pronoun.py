@@ -3,7 +3,7 @@
 Suggest a pronoun to use for a musical artist,
 by looking at their biography on Last.fm.
 
-Usage: python artist_pronoun.py
+Usage: python artist_pronoun.py artist_name
 """
 from __future__ import print_function
 import argparse
@@ -81,9 +81,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="Suggest a pronoun to use for a musical artist",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument(
-        'artist', nargs=1,
-        help='Artist')
+    parser.add_argument('artist', help='Artist')
     args = parser.parse_args()
 
     pick_word(args.artist)
