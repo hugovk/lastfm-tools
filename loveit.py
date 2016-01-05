@@ -22,8 +22,10 @@ last_loved_track = str(lastfm_network.get_user(
 print("Last:\t" + str(last_loved_track))
 
 print("Loving:\t" + str(track))
-if track is not None:
-    track.love()
+if track is None:
+    sys.exit("Didn't get the track now playing from Last.fm")
+
+track.love()
 
 
 # Confirm the track has been loved
