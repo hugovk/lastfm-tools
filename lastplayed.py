@@ -12,8 +12,9 @@ from mylast import *
 def get_recent_tracks(username, number):
     recent_tracks = lastfm_network.get_user(
         username).get_recent_tracks(limit=number)
-    for track in recent_tracks:
-        print_track(track)
+    for i, track in enumerate(recent_tracks):
+        printable = unicode_track_and_timestamp(track)
+        print_it(str(i+1) + " " + printable)
     return recent_tracks
 
 
