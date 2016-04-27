@@ -16,6 +16,11 @@ from mylast import (
     unicode_track_and_timestamp)
 from lastplayed import get_recent_tracks
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 # http://stackoverflow.com/a/3041990/724176
 def query_yes_no(question, default="yes"):
@@ -41,7 +46,7 @@ def query_yes_no(question, default="yes"):
 
     while True:
         sys.stdout.write(question + prompt)
-        choice = raw_input().lower()
+        choice = input().lower()
         if default is not None and choice == '':
             return valid[default]
         elif choice in valid:
