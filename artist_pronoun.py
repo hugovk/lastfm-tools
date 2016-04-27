@@ -7,7 +7,7 @@ Usage: python artist_pronoun.py artist_name
 """
 from __future__ import print_function
 import argparse
-from mylast import *
+from mylast import lastfm_network, print_it
 
 
 def count_em(words, text):

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from __future__ import print_function
 import sys
-from mylast import *
+from mylast import lastfm_network, lastfm_username
 
 # Show my now playing song, or that of a given username
 # Prerequisites: mylast.py, pyLast

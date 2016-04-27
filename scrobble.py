@@ -10,10 +10,10 @@ from __future__ import print_function
 import datetime
 import sys
 import time
-from mylast import *
+from mylast import lastfm_network, split_artist_track
 
 if len(sys.argv) < 2:
-    print("Usage: scrobbletrack.py \"artist - title\" [unixTimestamp]")
+    print("Usage: scrobbletrack.py \"artist - title\" [unix_timestamp]")
     sys.exit(1)
 
 testMode = False
@@ -22,30 +22,30 @@ if testMode:
 else:
     print("Live mode, can scrobble.")
 
-unixTimestamp = 0
+unix_timestamp = 0
 if len(sys.argv) > 2:
-    unixTimestamp = sys.argv[2]
-print(unixTimestamp)
+    unix_timestamp = sys.argv[2]
+print(unix_timestamp)
 
-artistTrack = sys.argv[1].decode(sys.getfilesystemencoding())
-print("input:\t\t'" + artistTrack + "'")
-# print(type(artistTrack))
+artist_track = sys.argv[1].decode(sys.getfilesystemencoding())
+print("input:\t\t'" + artist_track + "'")
+# print(type(artist_track))
 
 
-def scrobbleTrack(artistTrack, unixTimestamp):
+def scrobble_track(artist_track, unix_timestamp):
 
-    (artist, track) = split_artist_track(artistTrack)
+    (artist, track) = split_artist_track(artist_track)
 
     # Validate
-    if unixTimestamp == 0:
-    # Get UNIX timestamp
-        unixTimestamp = int(time.mktime(datetime.datetime.now().timetuple()))
-    print("Timestamp:\t" + str(unixTimestamp))
+    if unix_timestamp == 0:
+        # Get UNIX timestamp
+        unix_timestamp = int(time.mktime(datetime.datetime.now().timetuple()))
+    print("Timestamp:\t" + str(unix_timestamp))
 
     # Scrobble it
     if not testMode:
         lastfm_network.scrobble(
-            artist=artist, title=track, timestamp=unixTimestamp)
+            artist=artist, title=track, timestamp=unix_timestamp)
 
     # Confirm
     # print("Confirmation from Last.fm:")
@@ -56,6 +56,6 @@ def scrobbleTrack(artistTrack, unixTimestamp):
         # # print_it(track.playback_date + "\t" + unicode_track)
         # print(track.playback_date + "\t" + unicode_track)
 
-scrobbleTrack(artistTrack, unixTimestamp)
+scrobble_track(artist_track, unix_timestamp)
 
 # End of file

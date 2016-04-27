@@ -1,7 +1,8 @@
 #!/usr/bin/python
 from __future__ import print_function
+import pylast
 import sys
-from mylast import *
+from mylast import lastfm_network, lastfm_username
 
 # Loves whatever track is now playing on Last.fm,
 # then prints confirmation of last loved track.

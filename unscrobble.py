@@ -9,7 +9,11 @@ from __future__ import print_function
 import argparse
 import pylast
 import sys
-from mylast import *
+from mylast import (
+    lastfm_network,
+    lastfm_username,
+    print_it,
+    unicode_track_and_timestamp)
 from lastplayed import get_recent_tracks
 
 
@@ -87,7 +91,8 @@ if __name__ == "__main__":
     if not answer:
         sys.exit("Scrobble kept")
     else:
-        my_library = pylast.Library(user=lastfm_username, network=lastfm_network)
+        my_library = pylast.Library(user=lastfm_username,
+                                    network=lastfm_network)
 
         for last_scrobble in last_scrobbles:
             unscrobble(my_library, last_scrobble)

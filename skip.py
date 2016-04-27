@@ -6,7 +6,7 @@ Stop playing until the next track starts.
 from __future__ import print_function
 import subprocess
 import time
-from mylast import *
+from mylast import print_track
 from sys import platform as _platform
 
 

@@ -5,8 +5,16 @@ Show 20 last played tracks, or all the last played tracks of an artist
 """
 from __future__ import print_function
 import argparse
+import pylast
 import sys
-from mylast import *
+from mylast import (
+    lastfm_network,
+    lastfm_username,
+    print_it,
+    print_track,
+    split_artist_track,
+    TRACK_SEPARATOR,
+    unicode_track_and_timestamp)
 
 
 def get_recent_tracks(username, number):
