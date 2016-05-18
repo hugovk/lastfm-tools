@@ -70,8 +70,8 @@ def pick_word(artist_name):
         choice = "they"
         certainty = "quite good"
     else:
-        choice = "???"
-        certainty = "!!!"
+        choice = "they"
+        certainty = "default"
 
     print("Use " + choice.upper() + " (" + certainty + ")")
     return choice, certainty
