@@ -56,6 +56,7 @@ def scrobble_track(artist_track, unix_timestamp):
         # # print_it(track.playback_date + "\t" + unicode_track)
         # print(track.playback_date + "\t" + unicode_track)
 
+
 scrobble_track(artist_track, unix_timestamp)
 
 # End of file
