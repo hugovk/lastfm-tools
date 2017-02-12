@@ -46,6 +46,7 @@ def unicode_track_and_timestamp(track):
 def print_track(track):
     print_it(unicode_track_and_timestamp(track))
 
+
 TRACK_SEPARATOR = u" - "
 
 
