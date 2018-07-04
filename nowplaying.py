@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Authors: Amr Hassan <amr.hassan@gmail.com>
          and hugovk <https://github.com/hugovk>

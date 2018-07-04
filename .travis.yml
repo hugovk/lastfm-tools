@@ -1,12 +1,14 @@
 language: python
 
-python:
-  - 2.7
-  - 3.4
-  - 3.5
-  - 3.6
-  - pypy
-  - pypy3
+jobs:
+  include:
+    - python: 3.7
+      dist: xenial
+      sudo: required
+    - python: 3.6
+    - python: 3.5
+    - python: 3.4
+    - python: pypy3
 
 sudo: false
 
@@ -30,10 +32,6 @@ script:
 matrix:
   fast_finish: true
   allow_failures:
-    - python: 3.4
-    - python: 3.5
-    - python: 3.6
-    - python: pypy
     - python: pypy3
 
 env:

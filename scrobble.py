@@ -1,4 +1,4 @@
-﻿#!/usr/bin/python
+#!/usr/bin/env python3
 # coding: utf-8
 
 # Takes a track and scrobbles it
@@ -6,7 +6,6 @@
 # Optional parameter 2: UNIX timestamp. Default: now
 # Prerequisites: mylast.py, pyLast
 
-from __future__ import print_function
 import datetime
 import sys
 import time
@@ -27,7 +26,7 @@ if len(sys.argv) > 2:
     unix_timestamp = sys.argv[2]
 print(unix_timestamp)
 
-artist_track = sys.argv[1].decode(sys.getfilesystemencoding())
+artist_track = sys.argv[1]
 print("input:\t\t'" + artist_track + "'")
 # print(type(artist_track))
 
