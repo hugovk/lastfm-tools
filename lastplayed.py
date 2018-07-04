@@ -1,16 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Show 20 last played tracks, or all the last played tracks of an artist
 (and optionally track)
 """
-from __future__ import print_function
 import argparse
 import pylast
 import sys
 from mylast import (
     lastfm_network,
     lastfm_username,
-    print_it,
     print_track,
     split_artist_track,
     TRACK_SEPARATOR,
@@ -22,7 +20,7 @@ def get_recent_tracks(username, number):
         username).get_recent_tracks(limit=number)
     for i, track in enumerate(recent_tracks):
         printable = unicode_track_and_timestamp(track)
-        print_it(str(i+1) + " " + printable)
+        print(str(i+1) + " " + printable)
     return recent_tracks
 
 

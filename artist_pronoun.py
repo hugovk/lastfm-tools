@@ -1,11 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Suggest a pronoun to use for a musical artist,
 by looking at their biography on Last.fm.
 
 Usage: python artist_pronoun.py artist_name
 """
-from __future__ import print_function
 import argparse
 from mylast import lastfm_network, print_it
 
