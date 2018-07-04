@@ -1,9 +1,12 @@
 language: python
 
 python:
-  - 3.4
-  - 3.5
+  - 3.7
+    dist: xenial
+    sudo: required
   - 3.6
+  - 3.5
+  - 3.4
   - pypy3
 
 sudo: false
