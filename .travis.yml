@@ -1,13 +1,14 @@
 language: python
 
-python:
-  - 3.7
-    dist: xenial
-    sudo: required
-  - 3.6
-  - 3.5
-  - 3.4
-  - pypy3
+jobs:
+  include:
+    - python: 3.7
+      dist: xenial
+      sudo: required
+    - python: 3.6
+    - python: 3.5
+    - python: 3.4
+    - python: pypy3
 
 sudo: false
 
