@@ -1,14 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Check what BBC radio station iTunes/Winamp is now playing.
 Stop playing until the next track starts.
 """
-from __future__ import print_function
-import subprocess
+from __future__ import print_function, unicode_literals
+
 import time
-from mylast import lastfm_network, print_track
-from nowplaying import output
+
+# from pprint import pprint
 from sys import platform as _platform
+
+import bbcrealtime
+from bbcscrobbler import normalise_station, osascript, output
 
 
 def winamp_now_playing():
@@ -24,23 +27,14 @@ def winamp_now_playing():
     else:
         # Is Winamp playing?
 
-        if w.getPlayingStatus() == 'playing':
+        if w.getPlayingStatus() == "playing":
 
             # Is Winamp playing BBC Radio?
             now_playing = w.getCurrentTrackName()
             if "bbc" not in now_playing.lower():
                 print("Winamp:      Not BBC")
             else:
-                if "BBC Radio 1" in now_playing:
-                    station = "bbcradio1"
-                elif "BBC 1Xtra" in now_playing:
-                    station = "bbc1xtra"
-                elif "BBC Radio 2" in now_playing:
-                    station = "bbcradio2"
-                elif ("BBC 6Music" in now_playing or
-                      "BBC 6 Music" in now_playing or
-                      "bbc 6music" in now_playing):
-                    station = "bbc6music"
+                station = normalise_station(now_playing)
     return station
 
 
@@ -56,64 +50,47 @@ def itunes_now_playing():
     else:
 
         # Is iTunes running?
-        count = int(osascript([
-            "osascript",
-            "-e", "tell application \"System Events\"",
-            "-e", "count (every process whose name is \"iTunes\")",
-            "-e", "end tell"]))
+        count = int(
+            osascript(
+                "osascript "
+                "-e 'tell application \"System Events\"' "
+                "-e 'count (every process whose name is \"iTunes\")'"
+                " -e 'end tell'"
+            )
+        )
         if count == 0:
             output("iTunes:      not running")
         else:
 
             # Is iTunes playing?
-            state = osascript([
-                "osascript",
-                "-e", "tell application \"iTunes\" to player state as string"
-                ])
+            state = osascript(
+                "osascript "
+                "-e 'tell application \"iTunes\" to player state as string'"
+            )
 
             if state != "playing":
                 output("iTunes:      " + state)
             else:
-
                 # Is iTunes playing BBC Radio?
-                now_playing = osascript([
-                    "osascript",
-                    "-e", "tell application \"iTunes\"",
-                    "-e", "set thisTitle to name of current track",
-                    "-e", "set output to thisTitle",
-                    "-e", "end tell"])
-                if "BBC Radio" not in now_playing:
-                    print("iTunes:      Not BBC")
+                now_playing = osascript(
+                    "osascript "
+                    "-e 'tell application \"iTunes\"' "
+                    "-e 'set thisTitle to name of current track' "
+                    "-e 'set output to thisTitle' "
+                    "-e 'end tell'"
+                )
+                if "bbc" not in now_playing.lower():
+                    output("iTunes:      Not BBC")
                 else:
-                    if "BBC Radio 1" in now_playing:
-                        station = "bbcradio1"
-                    elif "BBC Radio 1Xtra" in now_playing:
-                        station = "bbc1xtra"
-                    elif "BBC Radio 2" in now_playing:
-                        station = "bbcradio2"
-                    elif "BBC Radio 6 Music" in now_playing:
-                        station = "bbc6music"
+                    station = normalise_station(now_playing)
     return station
-
-
-def get_recent_tracks(username, number):
-    recent_tracks = lastfm_network.get_user(
-        username).get_recent_tracks(limit=number)
-    for track in recent_tracks:
-        print_track(track)
-    return recent_tracks
-
-
-def lastfm_now_playing(station):
-    recent_tracks = lastfm_network.get_user(station).get_recent_tracks(limit=2)
-    last = recent_tracks[0]
-    return last
 
 
 def init():
     if _platform == "win32":
         global w
         import winamp  # http://www.shalabh.com/software/about_winamp_py.html
+
         w = winamp.winamp()
 
 
@@ -126,22 +103,14 @@ def media_player_now_playing():
         return None
 
 
-def osascript(args):
-    return subprocess.check_output(args).strip()
-
-
 def itunes_stop():
     if _platform == "darwin":
-        return osascript([
-            'osascript',
-            '-e', 'tell application "iTunes" to pause'])
+        return osascript("osascript -e 'tell application \"iTunes\" to pause'")
 
 
 def itunes_play():
     if _platform == "darwin":
-        return osascript([
-            'osascript',
-            '-e', 'tell application "iTunes" to play'])
+        return osascript("osascript -e 'tell application \"iTunes\" to play'")
 
 
 def media_player_stop():
@@ -164,27 +133,38 @@ def media_player_play():
         return None
 
 
+def format_track(track):
+    out = "{} - {}".format(track["artist"], track["title"])
+    return out
+
+
 def thing():
     init()
 
     station = media_player_now_playing()
-    print(station)
+    print("Station:", station)
     if station is None:
         return
 
-    skip = lastfm_now_playing(station)
-    print_track(skip)
+    skip = bbcrealtime.nowplaying(station)
+    if skip is None:
+        return
+
+    skip = format_track(skip)
+    print(skip)
 
     media_player_stop()
 
-    while(True):
+    while True:
         try:
             time.sleep(5)
-            now = lastfm_now_playing(station)
+            now = bbcrealtime.nowplaying(station)
+            now = format_track(now)
+            # print(now)
             print(".", end="")
             if now != skip:
                 print()
-                print_track(now)
+                print(now)
                 break
 
         except BaseException:
