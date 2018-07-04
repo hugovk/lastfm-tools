@@ -7,7 +7,7 @@ import pylast
 import sys
 
 # You have to have your own unique two values for API_KEY and API_SECRET
-# Obtain yours from http://www.last.fm/api/account for Last.fm
+# Obtain yours from https://www.last.fm/api/account for Last.fm
 
 try:
     API_KEY = os.environ['LASTFM_API_KEY']
@@ -39,7 +39,7 @@ def print_it(text):
 
 
 def unicode_track_and_timestamp(track):
-    unicode_track = unicode(str(track.track), 'utf8')
+    unicode_track = str(track.track)
     return track.playback_date + "\t" + unicode_track
 
 

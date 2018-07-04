@@ -187,7 +187,7 @@ def thing():
                 print_track(now)
                 break
 
-        except:
+        except BaseException:
             break
 
     media_player_play()
