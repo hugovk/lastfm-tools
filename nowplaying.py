@@ -35,20 +35,20 @@ def output(text):
     # Linux, OS X or Cygwin:
     elif _platform in ["linux", "linux2", "darwin", "cygwin"]:
         import sys
+
         sys.stdout.write("\x1b]2;" + text + "\x07")
 
 
 def duration(track):
-    return int(track.track.get_duration())/1000
+    return int(track.track.get_duration()) / 1000
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Loopy thing to show what a Last.fm user is now playing.",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument(
-        'user',  nargs='?', default='hvk',
-        help='User to check')
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument("user", nargs="?", default="hvk", help="User to check")
     args = parser.parse_args()
 
     network = pylast.LastFMNetwork(API_KEY, API_SECRET)
@@ -57,10 +57,9 @@ if __name__ == '__main__':
         skg = pylast.SessionKeyGenerator(network)
         url = skg.get_web_auth_url()
 
-        print(
-            "Please authorize the scrobbler "
-            "to scrobble to your account: %s\n" % url)
+        print("Please authorize the scrobbler to scrobble to your account: %s\n" % url)
         import webbrowser
+
         webbrowser.open(url)
 
         while True:

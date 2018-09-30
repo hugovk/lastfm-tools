@@ -13,7 +13,8 @@ from mylast import (
     lastfm_network,
     lastfm_username,
     print_it,
-    unicode_track_and_timestamp)
+    unicode_track_and_timestamp,
+)
 from lastplayed import get_recent_tracks
 
 try:
@@ -33,8 +34,7 @@ def query_yes_no(question, default="yes"):
 
     The "answer" return value is one of "yes" or "no".
     """
-    valid = {"yes": True, "y": True, "ye": True,
-             "no": False, "n": False}
+    valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
     if default is None:
         prompt = " [y/n] "
     elif default == "yes":
@@ -47,13 +47,12 @@ def query_yes_no(question, default="yes"):
     while True:
         sys.stdout.write(question + prompt)
         choice = input().lower()
-        if default is not None and choice == '':
+        if default is not None and choice == "":
             return valid[default]
         elif choice in valid:
             return valid[choice]
         else:
-            sys.stdout.write("Please respond with 'yes' or 'no' "
-                             "(or 'y' or 'n').\n")
+            sys.stdout.write("Please respond with 'yes' or 'no' (or 'y' or 'n').\n")
 
 
 def unscrobble(library, scrobble):
@@ -62,13 +61,13 @@ def unscrobble(library, scrobble):
     timestamp = scrobble.timestamp
 
     try:
-        my_library.remove_scrobble(
-            artist=artist, title=title, timestamp=timestamp)
+        my_library.remove_scrobble(artist=artist, title=title, timestamp=timestamp)
     except AttributeError as e:
         print("Exception: " + str(e))
         sys.exit(
             "Error: pylast 0.5.11 does not support removing scrobbles. "
-            "Please install latest pylast: pip install -U pylast")
+            "Please install latest pylast: pip install -U pylast"
+        )
     except Exception as e:
         sys.exit("Exception: " + str(e))
     print_it("Scrobble removed: " + unicode_track_and_timestamp(scrobble))
@@ -77,27 +76,27 @@ def unscrobble(library, scrobble):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Unscrobble the last played track or tracks",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
     parser.add_argument(
-        '-u', '--username', default=lastfm_username,
-        help="Last.fm username")
+        "-u", "--username", default=lastfm_username, help="Last.fm username"
+    )
     parser.add_argument(
-        '-n', '--number', default=1, type=int,
-        help="Number of tracks to unscrobble")
+        "-n", "--number", default=1, type=int, help="Number of tracks to unscrobble"
+    )
     args = parser.parse_args()
 
     print("Last scrobbles:")
     # +1 because now-playing tracks may also be included
-    last_scrobbles = get_recent_tracks(lastfm_username, args.number+1)
+    last_scrobbles = get_recent_tracks(lastfm_username, args.number + 1)
     # Now make sure we only unscrobble the required number
-    last_scrobbles = last_scrobbles[:args.number]
+    last_scrobbles = last_scrobbles[: args.number]
 
     answer = query_yes_no("Unscrobble last " + str(args.number) + "?")
     if not answer:
         sys.exit("Scrobble kept")
     else:
-        my_library = pylast.Library(user=lastfm_username,
-                                    network=lastfm_network)
+        my_library = pylast.Library(user=lastfm_username, network=lastfm_network)
 
         for last_scrobble in last_scrobbles:
             unscrobble(my_library, last_scrobble)

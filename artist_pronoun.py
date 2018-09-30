@@ -76,11 +76,12 @@ def pick_word(artist_name):
     return choice, certainty
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Suggest a pronoun to use for a musical artist",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('artist', help='Artist')
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument("artist", help="Artist")
     args = parser.parse_args()
 
     pick_word(args.artist)

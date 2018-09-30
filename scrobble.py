@@ -12,7 +12,7 @@ import time
 from mylast import lastfm_network, split_artist_track
 
 if len(sys.argv) < 2:
-    print("Usage: scrobbletrack.py \"artist - title\" [unix_timestamp]")
+    print('Usage: scrobbletrack.py "artist - title" [unix_timestamp]')
     sys.exit(1)
 
 testMode = False
@@ -43,17 +43,16 @@ def scrobble_track(artist_track, unix_timestamp):
 
     # Scrobble it
     if not testMode:
-        lastfm_network.scrobble(
-            artist=artist, title=track, timestamp=unix_timestamp)
+        lastfm_network.scrobble(artist=artist, title=track, timestamp=unix_timestamp)
 
     # Confirm
     # print("Confirmation from Last.fm:")
     # recent_tracks = lastfm_network.get_user(
-        # lastfm_username).get_recent_tracks(limit=1)
+    # lastfm_username).get_recent_tracks(limit=1)
     # for track in recent_tracks:
-        # unicode_track = unicode(str(track.track), 'utf8')
-        # # print_it(track.playback_date + "\t" + unicode_track)
-        # print(track.playback_date + "\t" + unicode_track)
+    # unicode_track = unicode(str(track.track), 'utf8')
+    # # print_it(track.playback_date + "\t" + unicode_track)
+    # print(track.playback_date + "\t" + unicode_track)
 
 
 scrobble_track(artist_track, unix_timestamp)
