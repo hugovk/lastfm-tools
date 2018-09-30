@@ -6,8 +6,6 @@ Stop playing until the next track starts.
 from __future__ import print_function, unicode_literals
 
 import time
-
-# from pprint import pprint
 from sys import platform as _platform
 
 import bbcrealtime

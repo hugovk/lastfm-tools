@@ -9,6 +9,7 @@
 import datetime
 import sys
 import time
+
 from mylast import lastfm_network, split_artist_track
 
 if len(sys.argv) < 2:

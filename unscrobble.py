@@ -6,16 +6,19 @@ Prerequisites:
 mylast.py, lastplayed.py, pyLast >= 1.0.0
 """
 from __future__ import print_function
+
 import argparse
-import pylast
 import sys
+
+import pylast
+
+from lastplayed import get_recent_tracks
 from mylast import (
     lastfm_network,
     lastfm_username,
     print_it,
     unicode_track_and_timestamp,
 )
-from lastplayed import get_recent_tracks
 
 try:
     input = raw_input

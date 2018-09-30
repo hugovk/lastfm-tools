@@ -7,9 +7,10 @@ Authors: Amr Hassan <amr.hassan@gmail.com>
 
 import argparse
 import os
-import pylast
-from sys import platform as _platform
 import time
+from sys import platform as _platform
+
+import pylast
 
 API_KEY = "8fe0d07b4879e9cd6f8d78d86a8f447c"
 API_SECRET = "debb11ad5da3be07d06fddd8fe95cc42"

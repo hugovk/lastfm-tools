@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import print_function
-import pylast
+
 import sys
+
+import pylast
+
 from mylast import lastfm_network, lastfm_username
 
 # Loves whatever track is now playing on Last.fm,

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import argparse
 import os
-import time
 import shlex
+import time
 
 from mylast import lastfm_network, lastfm_username
 

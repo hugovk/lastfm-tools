@@ -6,6 +6,7 @@ by looking at their biography on Last.fm.
 Usage: python artist_pronoun.py artist_name
 """
 import argparse
+
 from mylast import lastfm_network, print_it
 
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import print_function
+
 import sys
+
 from mylast import lastfm_network, lastfm_username
 
 # Prints a list of you last loved tracks on Last.fm.
