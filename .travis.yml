@@ -6,8 +6,6 @@ jobs:
       dist: xenial
       sudo: required
     - python: 3.6
-    - python: 3.5
-    - python: 3.4
     - python: pypy3
 
 sudo: false
@@ -18,15 +16,14 @@ cache:
 
 install:
  - pip install -U pip
- - pip install -U flake8
+ - pip install -U black flake8
  - pip install -r requirements.txt
- - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then pip install -U black; fi
 
 #script: coverage run --source=word_tools.py test_word_tools.py
 script:
  # Static analysis
  - flake8 --statistics --count
- - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then black --check --diff .; fi
+ - black --check --diff .
 
  # Test run
  - python lastplayed.py --username RJ

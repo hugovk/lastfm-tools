@@ -4,7 +4,7 @@ lastfm-tools
 [![Build Status](https://travis-ci.org/hugovk/lastfm-tools.svg?branch=master)](https://travis-ci.org/hugovk/lastfm-tools)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
-Some Python 3 CLI tools for talking to the Last.fm API.
+Some Python 3.6+ CLI tools for talking to the Last.fm API.
 
 Uses [pylast](https://github.com/pylast/pylast):
 

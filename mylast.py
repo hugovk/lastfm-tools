@@ -36,7 +36,7 @@ lastfm_network = pylast.LastFMNetwork(
 
 
 def track_and_timestamp(track):
-    return "{}\t{}".format(track.playback_date, track.track)
+    return f"{track.playback_date}\t{track.track}"
 
 
 def print_track(track):
