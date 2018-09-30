@@ -43,13 +43,13 @@ def print_track(track):
     print(track_and_timestamp(track))
 
 
-TRACK_SEPARATOR = u" - "
+TRACK_SEPARATOR = " - "
 
 
 def split_artist_track(artist_track):
-    artist_track = artist_track.replace(u" – ", " - ")
-    artist_track = artist_track.replace(u"“", '"')
-    artist_track = artist_track.replace(u"”", '"')
+    artist_track = artist_track.replace(" – ", " - ")
+    artist_track = artist_track.replace("“", '"')
+    artist_track = artist_track.replace("”", '"')
 
     (artist, track) = artist_track.split(TRACK_SEPARATOR)
     artist = artist.strip()
