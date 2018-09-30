@@ -3,8 +3,6 @@
 Check what BBC radio station iTunes/Winamp is now playing.
 Stop playing until the next track starts.
 """
-from __future__ import print_function, unicode_literals
-
 import time
 from sys import platform as _platform
 

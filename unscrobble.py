@@ -1,12 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 """
 Unscrobble the last played track or tracks
 Prerequisites:
 mylast.py, lastplayed.py, pyLast >= 1.0.0
 """
-from __future__ import print_function
-
 import argparse
 import sys
 
