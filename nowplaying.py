@@ -57,7 +57,7 @@ if __name__ == "__main__":
         skg = pylast.SessionKeyGenerator(network)
         url = skg.get_web_auth_url()
 
-        print("Please authorize the scrobbler to scrobble to your account: %s\n" % url)
+        print("Please authorize the scrobbler to scrobble to your account: {}\n".format(url))
         import webbrowser
 
         webbrowser.open(url)
