@@ -23,7 +23,7 @@ script:
  - black --check --diff .
 
  # Test run
- - python lastplayed.py --username RJ
+ - python lastplayed.py --username bbc6music
 
 # after_success:
 #  - coverage report
