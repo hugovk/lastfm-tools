@@ -1,25 +1,22 @@
 language: python
+cache: pip
 
-jobs:
+matrix:
+  fast_finish: true
   include:
     - python: 3.7
       dist: xenial
       sudo: required
     - python: 3.6
     - python: pypy3
-
-sudo: false
-
-cache:
-  directories:
-    - $HOME/.pip-cache/
+  allow_failures:
+    - python: pypy3
 
 install:
  - pip install -U pip
  - pip install -U black flake8
  - pip install -r requirements.txt
 
-#script: coverage run --source=word_tools.py test_word_tools.py
 script:
  # Static analysis
  - flake8 --statistics --count
@@ -31,11 +28,6 @@ script:
 # after_success:
 #  - coverage report
 #  - coveralls
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - python: pypy3
 
 env:
    global:
