@@ -58,11 +58,11 @@ def split_artist_track(artist_track):
     print("Track:\t\t'" + track + "'")
 
     # Validate
-    if len(artist) is 0 and len(track) is 0:
+    if len(artist) == 0 and len(track) == 0:
         sys.exit("Error: Artist and track are blank")
-    if len(artist) is 0:
+    if len(artist) == 0:
         sys.exit("Error: Artist is blank")
-    if len(track) is 0:
+    if len(track) == 0:
         sys.exit("Error: Track is blank")
 
     return (artist, track)
