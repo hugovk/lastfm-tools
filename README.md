@@ -47,10 +47,6 @@ Takes a track and scrobbles it
  * Mandatory parameter 1: "artist - track"
  * Optional parameter 2: UNIX timestamp. Default: now
 
-unscrobble.py
--------------
-
-After prompting, removes your last scrobbled track from your library. Use `--number` to unscrobble lots at a time.
 
 mylast.py
 ---------
