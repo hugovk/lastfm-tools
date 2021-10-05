@@ -11,7 +11,7 @@ from mylast import lastfm_network, lastfm_username
 
 
 def say(thing):
-    cmd = "say {}".format(shlex.quote(str(thing)))
+    cmd = f"say {shlex.quote(str(thing))}"
     os.system(cmd)
 
 
