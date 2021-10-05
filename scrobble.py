@@ -12,7 +12,7 @@ import time
 from mylast import lastfm_network, split_artist_track
 
 if len(sys.argv) < 2:
-    print('Usage: scrobbletrack.py "artist - title" [unix_timestamp]')
+    print('Usage: scrobble.py "artist - title" [unix_timestamp]')
     sys.exit(1)
 
 testMode = False
