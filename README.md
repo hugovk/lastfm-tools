@@ -49,6 +49,6 @@ Takes a track and scrobbles it
 mylast.py
 ---------
 
-Config and common things. You need your own Last.fm API key and secret, get them from http://www.last.fm/api/account and put them here. Also put your username and either password or password hash.
+Config and common things. You need your own Last.fm API key and secret, get them from https://www.last.fm/api/account/create and put them here. Also put your username and either password or password hash.
 
 
