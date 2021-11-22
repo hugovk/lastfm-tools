@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Show 20 last played tracks, or all the last played tracks of an artist
-(and optionally track)
+Show 20 last played tracks
 """
 import argparse
 

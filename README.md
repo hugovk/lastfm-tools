@@ -23,8 +23,6 @@ lastplayed.py
 
 Shows the last 20 tracks you scrobbled (or of a given username).
 
-Or shows all the last scrobbled tracks by an artist (or just of a given track).
-
 loveit.py
 ---------
 
