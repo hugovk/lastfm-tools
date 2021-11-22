@@ -1,5 +1,4 @@
-lastfm-tools
-============
+# lastfm-tools
 
 [![Lint](https://github.com/hugovk/lastfm-tools/actions/workflows/lint.yml/badge.svg)](https://github.com/hugovk/lastfm-tools/actions)
 [![Python: 3.7+](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
@@ -13,42 +12,37 @@ Uses [pylast](https://github.com/pylast/pylast):
 pip install pylast
 ```
 
-np.py
------
+## np.py
+
 Show my now playing song, or that of a given username.
 
-
-lastplayed.py
--------------
+## lastplayed.py
 
 Shows the last 20 tracks you scrobbled (or of a given username).
 
-loveit.py
----------
+## loveit.py
 
-Loves whatever track is now playing on Last.fm, then prints confirmation of last loved track.
+Loves whatever track is now playing on Last.fm, then prints confirmation of last loved
+track.
 
-loved.py
---------
+## loved.py
 
 Shows your last 20 (or a given number of) loved tracks.
 
-nowplaying.py
--------------
+## nowplaying.py
 
-Command-line loopy thing to show what a Last.fm user is now playing. Based on [bbcscrobbler](https://github.com/hugovk/bbcscrobbler).
+Command-line loopy thing to show what a Last.fm user is now playing. Based on
+[bbcscrobbler](https://github.com/hugovk/bbcscrobbler).
 
-scrobble.py
------------
+## scrobble.py
 
 Takes a track and scrobbles it
- * Mandatory parameter 1: "artist - track"
- * Optional parameter 2: UNIX timestamp. Default: now
 
+- Mandatory parameter 1: "artist - track"
+- Optional parameter 2: UNIX timestamp. Default: now
 
-mylast.py
----------
+## mylast.py
 
-Config and common things. You need your own Last.fm API key and secret, get them from https://www.last.fm/api/account/create and put them here. Also put your username and either password or password hash.
-
-
+Config and common things. You need your own Last.fm API key and secret, get them from
+https://www.last.fm/api/account/create and put them here. Also put your username and
+either password or password hash.
