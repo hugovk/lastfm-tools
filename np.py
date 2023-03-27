@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
 import argparse
 import os
 import shlex
+import sys
 import time
+
+import pylast
+from termcolor import colored  # pip install termcolor
 
 from mylast import lastfm_network, lastfm_username
 
@@ -10,9 +16,50 @@ from mylast import lastfm_network, lastfm_username
 # Prerequisites: mylast.py, pyLast
 
 
-def say(thing):
+last_output = None
+
+
+def output(text: str, type: str | None = None) -> None:
+    global last_output
+    if last_output == text:
+        return
+    else:
+        last_output = text
+    if type == "error":
+        print(colored(text, "red"))
+    else:
+        print(text)
+
+
+def say(thing: str) -> None:
     cmd = f"say {shlex.quote(str(thing))}"
     os.system(cmd)
+
+
+def is_track_loved(track: pylast.Track) -> str | pylast.Track:
+    """
+    Input: Track
+    If loved, return track string with a heart
+    else return Track
+    """
+    try:
+        if track:
+            loved = track.get_userloved()
+            if loved:
+                heart = colored("❤", "red")
+                return f"{track} {heart}"
+    except (
+        # KeyError,
+        # pylast.MalformedResponseError,
+        # pylast.NetworkError,
+        pylast.WSError,
+    ) as e:
+        output("is_track_loved", "error")
+        output(f"Error: {repr(e)}", "error")
+        print(dir(e))
+        output(e.message, "error")
+
+    return track
 
 
 if __name__ == "__main__":
@@ -32,20 +79,30 @@ if __name__ == "__main__":
 
     if not args.loop:
         now_playing = lastfm_network.get_user(args.username).get_now_playing()
-        print(now_playing)
+        output(is_track_loved(now_playing))
         if args.say:
             say(now_playing)
     else:
         last_played = None
         while True:
-            now_playing = lastfm_network.get_user(args.username).get_now_playing()
-            # print("last:", last_played)
-            # print("now: ", now_playing)
-            if now_playing != last_played:
-                last_played = now_playing
-                if now_playing:
-                    print(now_playing)
-                    if args.say:
-                        say(now_playing)
+            try:
+                now_playing = lastfm_network.get_user(args.username).get_now_playing()
+                # output("last:", last_played)
+                # output("now: ", now_playing)
+                if now_playing != last_played:
+                    last_played = now_playing
+                    if now_playing:
+                        output(is_track_loved(now_playing))
+                        if args.say:
+                            say(now_playing)
 
-            time.sleep(15)
+                time.sleep(15)
+            except (
+                # KeyError,
+                pylast.MalformedResponseError,
+                pylast.NetworkError,
+                pylast.WSError,
+            ) as e:
+                output(f"Error: {repr(e)}", "error")
+            except KeyboardInterrupt:
+                sys.exit()
