@@ -24,7 +24,6 @@ def winamp_now_playing():
         # Is Winamp playing?
 
         if w.getPlayingStatus() == "playing":
-
             # Is Winamp playing BBC Radio?
             now_playing = w.getCurrentTrackName()
             if "bbc" not in now_playing.lower():
@@ -44,7 +43,6 @@ def itunes_now_playing():
         return None
 
     else:
-
         # Is iTunes running?
         count = int(
             osascript(
@@ -57,7 +55,6 @@ def itunes_now_playing():
         if count == 0:
             output("iTunes:      not running")
         else:
-
             # Is iTunes playing?
             state = osascript(
                 "osascript "
@@ -170,7 +167,6 @@ def thing():
 
 
 if __name__ == "__main__":
-
     thing()
 
 # End of file

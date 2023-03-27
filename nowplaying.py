@@ -84,7 +84,6 @@ if __name__ == "__main__":
     playing_track = None
 
     while True:
-
         try:
             new_track = user.get_now_playing()
             # print(new_track)

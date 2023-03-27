@@ -32,7 +32,6 @@ print("input:\t\t'" + artist_track + "'")
 
 
 def scrobble_track(artist_track, unix_timestamp):
-
     (artist, track) = split_artist_track(artist_track)
 
     # Validate
