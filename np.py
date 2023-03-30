@@ -62,7 +62,7 @@ def is_track_loved(track: pylast.Track) -> str | pylast.Track:
     return track
 
 
-if __name__ == "__main__":
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Show my now playing song, or that of a given username",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -103,6 +103,10 @@ if __name__ == "__main__":
                 pylast.NetworkError,
                 pylast.WSError,
             ) as e:
-                output(f"Error: {repr(e)}", "error")
+                output(f"Error: {e}", "error")
             except KeyboardInterrupt:
                 sys.exit()
+
+
+if __name__ == "__main__":
+    main()
