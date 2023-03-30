@@ -36,18 +36,19 @@ def say(thing: str) -> None:
     os.system(cmd)
 
 
-def is_track_loved(track: pylast.Track) -> str | pylast.Track:
+def is_track_loved(track: pylast.Track) -> str:
     """
     Input: Track
     If loved, return track string with a heart
-    else return Track
+    else return track string
     """
+    text = f"{track.artist} - {colored(track.title, attrs=['bold'])}"
     try:
         if track:
             loved = track.get_userloved()
             if loved:
                 heart = colored("❤", "red")
-                return f"{track} {heart}"
+                return f"{text} {heart}"
     except (
         # KeyError,
         # pylast.MalformedResponseError,
@@ -59,7 +60,7 @@ def is_track_loved(track: pylast.Track) -> str | pylast.Track:
         print(dir(e))
         output(e.message, "error")
 
-    return track
+    return text
 
 
 def main() -> None:
