@@ -80,13 +80,9 @@ def main() -> None:
 
     if not args.loop:
         now_playing = lastfm_network.get_user(args.username).get_now_playing()
-        if type(now_playing) is pylast.Track:
-            output(is_track_loved(now_playing))
-            if args.say:
-                say(now_playing)
-        else:
-            output("No track currently playing")
-
+        if not now_playing:
+            return
+        output(is_track_loved(now_playing))
     else:
         last_played = None
         while True:
