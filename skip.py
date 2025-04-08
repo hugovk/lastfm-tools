@@ -15,7 +15,6 @@ def winamp_now_playing():
     If not Windows, return None.
     If Windows, return BBC station Winamp is now playing or None.
     """
-    global w
     station = None
     if _platform != "win32":
         return None
@@ -107,7 +106,6 @@ def itunes_play():
 
 
 def media_player_stop():
-    global w
     if _platform == "darwin":
         return itunes_stop()
     elif _platform == "win32":
@@ -117,7 +115,6 @@ def media_player_stop():
 
 
 def media_player_play():
-    global w
     if _platform == "darwin":
         return itunes_play()
     elif _platform == "win32":
