@@ -3,6 +3,7 @@
 Check what BBC radio station iTunes/Winamp is now playing.
 Stop playing until the next track starts.
 """
+
 import time
 from sys import platform as _platform
 
