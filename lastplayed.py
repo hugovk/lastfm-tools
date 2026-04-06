@@ -2,6 +2,7 @@
 """
 Show 20 last played tracks
 """
+
 import argparse
 
 import pylast

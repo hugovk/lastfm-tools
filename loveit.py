@@ -12,7 +12,7 @@ from mylast import lastfm_network, lastfm_username
 
 
 if len(sys.argv) > 1:
-    (artist, title) = sys.argv[1].split("-")
+    artist, title = sys.argv[1].split("-")
     artist = artist.strip()
     title = title.strip()
     track = pylast.Track(artist, title, lastfm_network)
