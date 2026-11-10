@@ -49,7 +49,10 @@ def split_artist_track(artist_track):
     artist_track = artist_track.replace("“", '"')
     artist_track = artist_track.replace("”", '"')
 
-    artist, track = artist_track.split(TRACK_SEPARATOR)
+    parts = artist_track.split(TRACK_SEPARATOR)
+    if len(parts) != 2:
+        sys.exit('Error: Expected "artist - track", got: ' + artist_track)
+    artist, track = parts
     artist = artist.strip()
     track = track.strip()
     print("Artist:\t\t'" + artist + "'")
