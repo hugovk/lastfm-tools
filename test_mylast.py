@@ -4,6 +4,7 @@
 pylast is stubbed in sys.modules before importing mylast, so these tests
 need no Last.fm API credentials and make no network requests.
 """
+
 import sys
 import types
 
